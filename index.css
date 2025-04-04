@@ -19,16 +19,17 @@ body {
     overflow-x: hidden;
 }
 
+/* Navigation */
 nav {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 2rem 5%;
+    padding: 1.5rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    transition: background-color 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 nav.scrolled {
@@ -38,7 +39,7 @@ nav.scrolled {
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
     font-weight: 700;
     letter-spacing: 2px;
     color: var(--accent);
@@ -49,7 +50,7 @@ nav.scrolled {
 
 .nav-links {
     display: flex;
-    gap: 2.5rem;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .nav-links a {
@@ -60,6 +61,7 @@ nav.scrolled {
     position: relative;
     opacity: 0;
     transform: translateY(-20px);
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .nav-links a:nth-child(1) { animation: fadeInDown 0.8s 0.4s forwards; }
@@ -90,11 +92,26 @@ nav.scrolled {
     animation: fadeInDown 0.8s 0.8s forwards;
 }
 
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 101;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 2px;
+    background: var(--text);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 0 10%;
+    padding: 0 5%;
     position: relative;
     overflow: hidden;
 }
@@ -112,12 +129,13 @@ nav.scrolled {
 
 .hero-content {
     max-width: 600px;
+    width: 100%;
 }
 
 .hero-subtitle {
     color: var(--accent);
     letter-spacing: 3px;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 2vw, 1rem);
     margin-bottom: 1rem;
     opacity: 0;
     transform: translateX(-30px);
@@ -125,7 +143,7 @@ nav.scrolled {
 }
 
 .hero-title {
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 6vw, 4rem);
     line-height: 1.1;
     margin-bottom: 1.5rem;
     opacity: 0;
@@ -140,11 +158,12 @@ nav.scrolled {
     opacity: 0;
     transform: translateX(-30px);
     animation: fadeInLeft 0.8s 1.2s forwards;
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .hero-btn {
     display: inline-block;
-    padding: 1rem 2.5rem;
+    padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem);
     background: var(--accent);
     color: var(--primary);
     text-decoration: none;
@@ -155,6 +174,7 @@ nav.scrolled {
     opacity: 0;
     transform: translateX(-30px);
     animation: fadeInLeft 0.8s 1.4s forwards;
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .hero-btn:hover {
@@ -162,38 +182,42 @@ nav.scrolled {
     box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
 }
 
-.hero-video{
+.hero-video {
     position: absolute;
-    height: 60%;
+    height: auto;
+    max-height: 60%;
+    width: auto;
+    max-width: 40%;
     right: 4%;
     opacity: 0;
     z-index: -1;
     transform: translateX(50px);
-    animation: fadeInRight  0.8s 1.2s forwards;
+    animation: fadeInRight 0.8s 1.2s forwards;
 }
 
+/* Collections Section */
 .collections {
-    padding: 8rem 10%;
+    padding: clamp(4rem, 6vw, 8rem) 5%;
     background: var(--secondary);
     position: relative;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .section-subtitle {
     color: var(--accent);
     letter-spacing: 3px;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 2vw, 1rem);
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s forwards;
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     margin-top: 1rem;
     opacity: 0;
     transform: translateY(30px);
@@ -202,8 +226,8 @@ nav.scrolled {
 
 .watch-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
 }
 
 .watch-card {
@@ -227,7 +251,7 @@ nav.scrolled {
 
 .watch-image {
     width: 100%;
-    height: 300px;
+    height: clamp(250px, 30vw, 300px);
     object-fit: cover;
     transition: transform 0.5s ease;
 }
@@ -237,11 +261,11 @@ nav.scrolled {
 }
 
 .watch-info {
-    padding: 1.5rem;
+    padding: clamp(1rem, 2vw, 1.5rem);
 }
 
 .watch-name {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
     margin-bottom: 0.5rem;
 }
 
@@ -249,17 +273,19 @@ nav.scrolled {
     color: var(--accent);
     font-weight: 600;
     margin-bottom: 1rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
 }
 
 .watch-description {
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
 .watch-btn {
     display: inline-block;
-    padding: 0.6rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     background: transparent;
     color: var(--accent);
     border: 1px solid var(--accent);
@@ -267,6 +293,7 @@ nav.scrolled {
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
 .watch-btn:hover {
@@ -274,21 +301,22 @@ nav.scrolled {
     color: var(--primary);
 }
 
+/* Features Section */
 .features {
-    padding: 8rem 10%;
+    padding: clamp(4rem, 6vw, 8rem) 5%;
     position: relative;
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-top: 5rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: clamp(1.5rem, 3vw, 3rem);
+    margin-top: clamp(3rem, 5vw, 5rem);
 }
 
 .feature-card {
     text-align: center;
-    padding: 2rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
     border-radius: 10px;
     transition: all 0.5s ease;
     opacity: 0;
@@ -306,24 +334,25 @@ nav.scrolled {
 }
 
 .feature-icon {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     color: var(--accent);
     margin-bottom: 1.5rem;
 }
 
 .feature-title {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     margin-bottom: 1rem;
 }
 
 .feature-description {
     color: var(--text-secondary);
     line-height: 1.6;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
 /* CTA Section */
 .cta {
-    padding: 8rem 10%;
+    padding: clamp(4rem, 6vw, 8rem) 5%;
     background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80');
     background-size: cover;
     background-position: center;
@@ -337,7 +366,7 @@ nav.scrolled {
 }
 
 .cta-title {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     margin-bottom: 1.5rem;
     opacity: 0;
     transform: translateY(30px);
@@ -351,11 +380,12 @@ nav.scrolled {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s 0.3s forwards;
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .cta-btn {
     display: inline-block;
-    padding: 1rem 2.5rem;
+    padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem);
     background: var(--accent);
     color: var(--primary);
     text-decoration: none;
@@ -366,6 +396,7 @@ nav.scrolled {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s 0.5s forwards;
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .cta-btn:hover {
@@ -373,20 +404,21 @@ nav.scrolled {
     box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
 }
 
+/* Footer */
 footer {
     background: var(--secondary);
-    padding: 5rem 10% 2rem;
+    padding: clamp(3rem, 5vw, 5rem) 5% clamp(1.5rem, 3vw, 2rem);
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: clamp(1.5rem, 3vw, 3rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .footer-logo {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
     font-weight: 700;
     letter-spacing: 2px;
     color: var(--accent);
@@ -397,6 +429,7 @@ footer {
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
 .social-links {
@@ -408,12 +441,13 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: clamp(35px, 4vw, 40px);
+    height: clamp(35px, 4vw, 40px);
     border-radius: 50%;
     background: var(--primary);
     color: var(--text);
     transition: all 0.3s ease;
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .social-links a:hover {
@@ -423,7 +457,7 @@ footer {
 }
 
 .footer-heading {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     margin-bottom: 1.5rem;
     position: relative;
 }
@@ -450,6 +484,7 @@ footer {
     color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.3s ease;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
 .footer-links a:hover {
@@ -458,11 +493,13 @@ footer {
 
 .footer-bottom {
     text-align: center;
-    padding-top: 2rem;
+    padding-top: clamp(1rem, 2vw, 2rem);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-secondary);
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
 }
 
+/* Animations */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -507,25 +544,104 @@ footer {
     }
 }
 
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+    .hero-video {
+        max-width: 50%;
+    }
+}
+
 @media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--secondary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: all 0.5s ease;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
     .hero {
         flex-direction: column;
         text-align: center;
         padding-top: 8rem;
+        padding-bottom: 4rem;
     }
 
     .hero-content {
         margin-bottom: 3rem;
     }
 
-    .hero-image {
+    .hero-video {
         position: relative;
         right: auto;
-        height: auto;
         max-width: 100%;
+        margin-top: 2rem;
     }
 
-    .nav-links {
-        display: none;
+    .hero::before {
+        background: radial-gradient(circle at 50% 70%, rgba(212, 175, 55, 0.1) 0%, rgba(10, 10, 10, 1) 70%);
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        padding: 1rem 5%;
+    }
+
+    .hero {
+        padding-top: 6rem;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .watch-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-btn, .cta-btn, .watch-btn {
+        width: 100%;
+        text-align: center;
     }
 }
